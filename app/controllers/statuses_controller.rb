@@ -84,8 +84,8 @@ class StatusesController < ApplicationController
     return false if info.nil?
 
     @misskey_software = %w(misskey calckey cherrypick sharkey).include?(info.software) &&
-                        ((@status.public_unlisted_visibility? && @status.account.user&.setting_reject_public_unlisted_subscription) ||
-                         (@status.unlisted_visibility? && @status.account.user&.setting_reject_unlisted_subscription))
+                        ((@status.public_unlisted_visibility? && !@status.public_searchability? && @status.account.user&.setting_reject_public_unlisted_subscription) ||
+                         (@status.unlisted_visibility? && !@status.public_searchability? && @status.account.user&.setting_reject_unlisted_subscription))
   end
 
   def status_activity_serializer
