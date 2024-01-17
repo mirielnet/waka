@@ -60,6 +60,28 @@ jobs:
           name: ${{ github.sha }}
           retention-days: 0
 
+      - name: Fetch original branch
+        run: |
+          git fetch origin main
+          git checkout main
+
+      - name: Precompile assets
+        run: |
+          ./bin/rails assets:clobber
+          ./bin/rails assets:precompile
+
+      - name: Archive origin asset artifacts
+        run: |
+          tar --exclude={"*.br","*.gz"} -zcf artifacts_main.tar.gz public/assets public/packs*
+
+      - uses: actions/upload-artifact@v3
+        if: matrix.mode == 'test'
+        with:
+          path: |-
+            ./artifacts_main.tar.gz
+          name: ${{ github.sha }}_main
+          retention-days: 0
+
   test:
     runs-on: ubuntu-latest
 
@@ -412,11 +434,11 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           path: './'
-          name: ${{ github.sha }}
+          name: ${{ github.sha }}_main
 
       - name: Expand archived asset artifacts
         run: |
-          tar xvzf artifacts.tar.gz
+          tar xvzf artifacts_main.tar.gz
 
       - name: Set up Ruby environment
         uses: ./.github/actions/setup-ruby
@@ -435,12 +457,6 @@ jobs:
 
       - name: Checkout to upstream
         run: 'git checkout main'
-
-      - name: Clean assets
-        run: './bin/rails assets:clobber'
-
-      - name: Precompile assets
-        run: './bin/rails assets:precompile'
 
       - run: bin/rspec
 
