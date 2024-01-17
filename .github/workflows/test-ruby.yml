@@ -430,6 +430,9 @@ jobs:
       - name: Run back_upstream script
         run: './bin/rake dangerous:back_upstream'
 
+      - name: Fetch git repository
+        run: 'git fetch origin main'
+
       - name: Checkout to upstream
         run: 'git checkout main'
 
