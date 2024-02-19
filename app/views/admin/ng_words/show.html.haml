@@ -21,13 +21,13 @@
     = f.input :ng_words, wrapper: :with_label, as: :text, input_html: { rows: 10 }, label: t('admin.ng_words.keywords'), hint: t('admin.ng_words.keywords_hint')
 
   .fields-group
-    = f.input :post_hash_tags_max, wrapper: :with_label, as: :integer, label: t('admin.ng_words.post_hash_tags_max')
+    = f.input :post_hash_tags_max, wrapper: :with_label, as: :integer, label: t('admin.ng_words.post_hash_tags_max'), hint: t('admin.ng_words.generic.disable_with_zero_hint')
 
   .fields-group
-    = f.input :post_stranger_mentions_max, wrapper: :with_label, as: :integer, label: t('admin.ng_words.post_stranger_mentions_max')
+    = f.input :post_stranger_mentions_max, wrapper: :with_label, as: :integer, label: t('admin.ng_words.post_stranger_mentions_max'), hint: t('admin.ng_words.generic.disable_with_zero_hint')
 
   .fields-group
-    = f.input :post_mentions_max, wrapper: :with_label, as: :integer, label: t('admin.ng_words.post_mentions_max')
+    = f.input :post_mentions_max, wrapper: :with_label, as: :integer, label: t('admin.ng_words.post_mentions_max'), hint: t('admin.ng_words.generic.disable_with_zero_hint')
 
   .fields-group
     = f.input :hide_local_users_for_anonymous, wrapper: :with_label, as: :boolean, label: t('admin.ng_words.hide_local_users_for_anonymous')
