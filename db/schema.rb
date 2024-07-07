@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema[7.1].define(version: 2024_06_07_094856) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgroonga"
   enable_extension "plpgsql"
 
   create_table "account_aliases", force: :cascade do |t|
@@ -1420,6 +1421,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_07_094856) do
     t.datetime "updated_at", precision: nil, null: false
     t.bigint "in_reply_to_id"
     t.bigint "reblog_of_id"
+    t.index ["text"], name: "index_statuses_on_text", using: :pgroonga
     t.string "url"
     t.boolean "sensitive", default: false, null: false
     t.integer "visibility", default: 0, null: false
