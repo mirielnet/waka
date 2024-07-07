@@ -136,7 +136,7 @@ class InitialStateSerializer < ActiveModel::Serializer
       registrations_open: Setting.registrations_mode != 'none' && !reach_registrations_limit? && !Rails.configuration.x.single_user_mode,
       registrations_reach_limit: Setting.registrations_mode != 'none' && reach_registrations_limit?,
       repository: Mastodon::Version.repository,
-      search_enabled: Chewy.enabled?,
+      search_enabled: true,
       single_user_mode: Rails.configuration.x.single_user_mode,
       source_url: instance_presenter.source_url,
       sso_redirect: sso_redirect,
