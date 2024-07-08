@@ -48,6 +48,10 @@ class NodeInfo::Serializer < ActiveModel::Serializer
         name: 'mastodon',
         version: Mastodon::Version.to_s_of_mastodon,
       },
+      nodeAdmins: [{
+        name: '@miriel',
+        email: 'contact@和歌.net',
+      }]
     }
   end
 
