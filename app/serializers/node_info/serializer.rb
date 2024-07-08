@@ -52,10 +52,10 @@ class NodeInfo::Serializer < ActiveModel::Serializer
         name: 'Miriel(@miriel@post.miriel.dev)',
         email: 'contact@和歌.net',
       },
-      nodeAdmins: [{
+      nodeAdmins: {
         name: 'Miriel(@miriel@post.miriel.dev)',
         email: 'contact@和歌.net',
-      }],
+      },
     }
   end
 
