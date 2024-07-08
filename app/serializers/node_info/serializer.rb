@@ -49,11 +49,11 @@ class NodeInfo::Serializer < ActiveModel::Serializer
         version: Mastodon::Version.to_s_of_mastodon,
       },
       maintainer: {
-        name: 'Miriel(@miriel@post.miriel.dev)',
+        name: 'Miriel',
         email: 'contact@和歌.net',
       },
       nodeAdmins: {
-        name: 'Miriel(@miriel@post.miriel.dev)',
+        name: 'Miriel',
         email: 'contact@和歌.net',
       },
     }
